@@ -1,7 +1,7 @@
 import { Example } from "../main/example";
 
 const fizzbuzz = (n: number) => {
-  if (n === 15)
+  if (n % 3 === 0 && n % 5 === 0)
     return "fizzbuzz"
   if (n % 3 === 0)
     return "fizz"
