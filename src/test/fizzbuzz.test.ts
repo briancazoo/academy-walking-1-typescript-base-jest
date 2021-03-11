@@ -3,7 +3,7 @@ import { Example } from "../main/example";
 const fizzbuzz = (n: number) => {
   if (n % 3 === 0)
     return "fizz"
-  if (n === 5)
+  if (n % 5 === 0)
     return "buzz"
   return n.toString();
 };
@@ -42,6 +42,12 @@ describe("fizzbuzz", () => {
   it("should return 'buzz' when we pass 25", () => {
     const output = fizzbuzz(25);
     const expected = "buzz";
+    expect(output).toBe(expected);
+  });
+
+  it("should return 'fizzbuzz' when we pass 15", () => {
+    const output = fizzbuzz(15);
+    const expected = "fizzbuzz";
     expect(output).toBe(expected);
   });
 });
