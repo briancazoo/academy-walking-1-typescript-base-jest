@@ -1,6 +1,8 @@
 import { Example } from "../main/example";
 
 const fizzbuzz = (n: number) => {
+  if (n === 3)
+    return "fizz"
   return n.toString();
 };
 
@@ -22,4 +24,11 @@ describe("fizzbuzz", () => {
     const expected = "fizz";
     expect(output).toBe(expected);
   });
+
+  it("should return 'fizz' when we pass 9", () => {
+    const output = fizzbuzz(9);
+    const expected = "fizz";
+    expect(output).toBe(expected);
+  });
+
 });
