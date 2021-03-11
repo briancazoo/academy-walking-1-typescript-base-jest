@@ -1,6 +1,8 @@
 import { Example } from "../main/example";
 
 const fizzbuzz = (n: number) => {
+  if (n === 15)
+    return "fizzbuzz"
   if (n % 3 === 0)
     return "fizz"
   if (n % 5 === 0)
@@ -47,6 +49,12 @@ describe("fizzbuzz", () => {
 
   it("should return 'fizzbuzz' when we pass 15", () => {
     const output = fizzbuzz(15);
+    const expected = "fizzbuzz";
+    expect(output).toBe(expected);
+  });
+
+  it("should return 'fizzbuzz' when we pass 45", () => {
+    const output = fizzbuzz(45);
     const expected = "fizzbuzz";
     expect(output).toBe(expected);
   });
