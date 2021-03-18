@@ -1,11 +1,12 @@
 function stringCalculator(numbers: string) {
-  if (numbers === "//;\n") return 0;
+  const optionalString = "//;\n";
+  if (numbers === optionalString) return 0;
 
   let delimiter = ",";
   let input = numbers;
-  if (numbers.startsWith("//;\n")) {
+  if (numbers.startsWith(optionalString)) {
     delimiter = ";";
-    input = numbers.replace("//;\n", "");
+    input = numbers.replace(optionalString, "");
   }
   return input
     .replace("\n", delimiter)
