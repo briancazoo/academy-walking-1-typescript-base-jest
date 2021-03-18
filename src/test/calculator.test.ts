@@ -1,4 +1,5 @@
 function stringCalculator(numbers: string) {
+  if (numbers.includes('-')) throw new Error()
   const hasCustomDelimiter = numbers.startsWith("//");
   const [delimiter, input] = hasCustomDelimiter
     ? [numbers[2], numbers.slice(4)]
@@ -54,6 +55,12 @@ describe("stringCalculator", () => {
 
   it("should throw an exeption when passed '-1'", () => {
     const input = "-1";
+    expect(() => stringCalculator(input)).toThrow();
+  });
+
+  it.each([
+    ["0,-1"],
+  ])("should throw an error", (input) => {
     expect(stringCalculator(input)).toThrow();
   });
 });
