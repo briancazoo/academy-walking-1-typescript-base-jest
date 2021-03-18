@@ -2,7 +2,8 @@ function stringCalculator(numbers: string) {
     if(numbers === '//;') return 0;
     if(numbers === '//;\n0;1') return 1;
     if(numbers === '//;\n0;2') return 2;
-    return numbers.replace('\n', ',').split(',').reduce((total, number) => Number(number) + total, 0)
+    const delimiter = ',';
+    return numbers.replace('\n', delimiter).split(delimiter).reduce((total, number) => Number(number) + total, 0)
 }
 
 describe("stringCalculator", () => {
