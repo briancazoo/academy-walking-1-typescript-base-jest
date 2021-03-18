@@ -32,4 +32,10 @@ describe("stringCalculator", () => {
     ])("takes %s and returns %d", (input, expected) =>{
         expect(stringCalculator(input)).toBe(expected)
     })
+
+    it.each([
+        ["//;", 0],
+    ])("takes %s and returns %d", (input, expected) =>{
+        expect(stringCalculator(input)).toBe(expected)
+    })
 })
