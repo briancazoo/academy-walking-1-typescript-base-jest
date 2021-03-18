@@ -1,16 +1,11 @@
 function stringCalculator(numbers: string) {
-  function parseNumber(numbers: string) {
-    let delimiter = ",";
-    let input = numbers;
+  let delimiter = ",";
+  let input = numbers;
 
-    if (numbers.startsWith("//")) {
-      delimiter = numbers[2];
-      input = numbers.slice(4);
-    }
-    return { delimiter, input };
+  if (numbers.startsWith("//")) {
+    delimiter = numbers[2];
+    input = numbers.slice(4);
   }
-
-  let { delimiter, input } = parseNumber(numbers);
 
   return input
     .replace("\n", delimiter)
