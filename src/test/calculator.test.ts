@@ -51,4 +51,9 @@ describe("stringCalculator", () => {
   ])("takes %s and returns %d", (input, expected) => {
     expect(stringCalculator(input)).toBe(expected);
   });
+
+  it("should throw an exeption when passed '-1'", () => {
+    const input = "-1";
+    expect(stringCalculator(input)).toThrow();
+  });
 });
