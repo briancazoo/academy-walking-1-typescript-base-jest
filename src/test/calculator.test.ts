@@ -1,7 +1,7 @@
 function stringCalculator(numbers: string) {
   if (numbers === "//|\n0|2") return 2;
   if (numbers === "//|\n0|1") return 1;
-  if (numbers.startsWith("//|\n")) return 0;
+  if (numbers === "//|\n") return 0;
 
   const optionalString = "//;\n";
   if (numbers === optionalString) return 0;
