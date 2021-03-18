@@ -49,6 +49,7 @@ describe("stringCalculator", () => {
     ["//;\n", 0],
     ["//;\n0;1", 1],
     ["//;\n0;2", 2],
+    ["//|\n", 0],
   ])("takes %s and returns %d", (input, expected) => {
     expect(stringCalculator(input)).toBe(expected);
   });
