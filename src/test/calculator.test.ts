@@ -1,11 +1,8 @@
 function stringCalculator(numbers: string) {
-  let delimiter = ",";
-  let input = numbers;
-
-  if (numbers.startsWith("//")) {
-    delimiter = numbers[2];
-    input = numbers.slice(4);
-  }
+  const hasCustomDelimiter = numbers.startsWith("//");
+  const [delimiter, input] = hasCustomDelimiter
+    ? [numbers[2], numbers.slice(4)]
+    : [",", numbers];
 
   return input
     .replace("\n", delimiter)
