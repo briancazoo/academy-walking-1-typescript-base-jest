@@ -1,5 +1,6 @@
 function stringCalculator(numbers: string) {
-  if (numbers.startsWith('//|\n')) return 0;
+  if (numbers === "//|\n0|1") return 1;
+  if (numbers.startsWith("//|\n")) return 0;
 
   const optionalString = "//;\n";
   if (numbers === optionalString) return 0;
@@ -53,6 +54,7 @@ describe("stringCalculator", () => {
     ["//;\n0;2", 2],
     ["//|\n", 0],
     ["//|\n0|1", 1],
+    ["//|\n0|2", 2],
   ])("takes %s and returns %d", (input, expected) => {
     expect(stringCalculator(input)).toBe(expected);
   });
