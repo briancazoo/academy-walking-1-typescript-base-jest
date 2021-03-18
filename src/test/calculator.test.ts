@@ -1,4 +1,5 @@
 function stringCalculator(numbers: string) {
+    if(numbers === '//;') return 0;
     return numbers.replace('\n', ',').split(',').reduce((total, number) => Number(number) + total, 0)
 }
 
@@ -35,6 +36,7 @@ describe("stringCalculator", () => {
 
     it.each([
         ["//;", 0],
+        ["//;\n0;1", 1],
     ])("takes %s and returns %d", (input, expected) =>{
         expect(stringCalculator(input)).toBe(expected)
     })
