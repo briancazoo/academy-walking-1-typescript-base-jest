@@ -1,15 +1,18 @@
 const numerals = (number: number): string => {
-  return "I".repeat(number);
+  let result = ["I", "II", "III", "IV"];
+  return result[number - 1];
 };
 
 describe("example test", () => {
   const cases = [
-      [1, 'I'],
-      [2, 'II'],
-      [4, 'IV'],
-  ] as const
+    [1, "I"],
+    [2, "II"],
+    [3, "III"],
+    [4, "IV"],
+    [5, "V"],
+  ] as const;
 
-  it.each(cases)('%s should return %s', (number, numeral) => {
+  it.each(cases)("%s should return %s", (number, numeral) => {
     const result = numerals(number);
     expect(result).toBe(numeral);
   });
