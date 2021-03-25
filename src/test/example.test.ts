@@ -1,5 +1,5 @@
 const numerals = (number: number): string => {
-  let result = ["I", "II", "III", "IV"];
+  let result = ["I", "II", "III", "IV", "V"];
   return result[number - 1];
 };
 
@@ -10,6 +10,7 @@ describe("example test", () => {
     [3, "III"],
     [4, "IV"],
     [5, "V"],
+    [6, "VI"],
   ] as const;
 
   it.each(cases)("%s should return %s", (number, numeral) => {
