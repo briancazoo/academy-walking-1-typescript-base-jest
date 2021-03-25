@@ -1,14 +1,16 @@
 const numerals = (number: number): string => {
-  return "I";
+  return "I".repeat(number);
 };
 
 describe("example test", () => {
-  it('should return "I" when inputting 1', () => {
-    const result = numerals(1);
-    expect(result).toBe("I");
+  const cases = [
+      [1, 'I'],
+      [2, 'II'],
+      [4, 'IV'],
+  ] as const
+
+  it.each(cases)('%s should return %s', (number, numeral) => {
+    const result = numerals(number);
+    expect(result).toBe(numeral);
   });
-    it('should return "II" when inputting 2', () => {
-        const result = numerals(2);
-        expect(result).toBe("II");
-    });
 });
