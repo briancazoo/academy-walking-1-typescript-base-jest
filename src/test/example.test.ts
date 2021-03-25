@@ -31,6 +31,9 @@ const bases: { [key: string]: string[] } = {
   if (number <= 3) {
     return baseUnit[number]
   }
+  if (number === 4) {
+    return digit + base
+  }
   if (number % 5 === 4) {
     return digit + nextBase;
   }
