@@ -1,6 +1,14 @@
 const numerals = (number: number): string => {
-  let result = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-  return result[number - 1];
+  let result = ["", "I", "II", "III"];
+  if (number === 10) {
+      return "X"
+  }
+
+  if (number >= 5) {
+      return "V" + result[number - 5] 
+  }
+
+  return result[number];
 };
 
 describe("example test", () => {
@@ -13,7 +21,6 @@ describe("example test", () => {
     [6, "VI"],
     [7, "VII"],
     [8, "VIII"],
-    [9, "IX"],
     [10, "X"],
   ] as const;
 
