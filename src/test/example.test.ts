@@ -1,10 +1,14 @@
 const numerals = (number: number): string => {
-    return 'I'
-}
+  return "I";
+};
 
-describe('example test', () => {
-    it("should give sum of a + b when adding a and b", () => {
-        const result = numerals(1)
-        expect(result).toBe('I');
-    })
-})
+describe("example test", () => {
+  it('should return "I" when inputting 1', () => {
+    const result = numerals(1);
+    expect(result).toBe("I");
+  });
+    it('should return "II" when inputting 2', () => {
+        const result = numerals(2);
+        expect(result).toBe("II");
+    });
+});
