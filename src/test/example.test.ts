@@ -5,20 +5,18 @@ const numerals = (number: number): string => {
     10: "X",
   };
   let key = 0;
-  if (0 <= number && number < 5) {
+  if (number < 5) {
     key = 0;
-  } else {
+  } else if (number < 10) {
     key = 5;
+  } else {
+    key = 10
   }
 
   const base = bases[key];
   const nextBase = bases[key + 5];
 
   let result = ["", "I", "II", "III"];
-  // if (number === 10) {
-  //   return "X";
-  // }
-
 
   if (number % 5 === 4) {
     return "I" + nextBase;
@@ -38,6 +36,8 @@ describe("example test", () => {
     [8, "VIII"],
     [9, "IX"],
     [10, "X"],
+    [11, "XI"],
+    [14, "XIV"],
   ] as const;
 
   it.each(cases)("%s should return %s", (number, numeral) => {
