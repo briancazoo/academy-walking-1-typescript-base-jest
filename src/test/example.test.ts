@@ -1,27 +1,10 @@
-const _numerals = (
-  number: number,
-  digit: string = "I"
-): string => {
-
-const bases: { [key: string]: string[] } = {
-    "I": ["I", "V", "X"],
-    "X": ["X", "L", "C"],
-    "C": ["C", "D", "M"],
-    "M": ["M", "", ""]
-}
-//   const bases: { [key: number]: string } = {
-//     0: "",
-//     5: digit[1],
-//     10: digit[2],
-//   };
-//   let key = 0;
-//   if (number < 5) {
-//     key = 0;
-//   } else if (number < 10) {
-//     key = 5;
-//   } else {
-//     key = 10;
-//   }
+const _numerals = (number: number, digit: string = "I"): string => {
+  const bases: { [key: string]: string[] } = {
+    I: ["I", "V", "X"],
+    X: ["X", "L", "C"],
+    C: ["C", "D", "M"],
+    M: ["M", "", ""],
+  };
 
   const base = bases[digit][1];
   const nextBase = bases[digit][2];
@@ -29,10 +12,10 @@ const bases: { [key: string]: string[] } = {
   let baseUnit = ["", digit, digit + digit, digit + digit + digit];
 
   if (number <= 3) {
-    return baseUnit[number]
+    return baseUnit[number];
   }
   if (number === 4) {
-    return digit + base
+    return digit + base;
   }
   if (number % 5 === 4) {
     return digit + nextBase;
@@ -42,15 +25,12 @@ const bases: { [key: string]: string[] } = {
 
 const numerals = (number: number): string => {
   if (number < 10) return _numerals(number);
-  if (number < 100) return (
-    _numerals(Math.floor(number / 10), "X") + numerals(number % 10)
-  );
+  if (number < 100)
+    return _numerals(Math.floor(number / 10), "X") + numerals(number % 10);
   if (number < 1000)
-  return (
-    _numerals(Math.floor(number / 100), "C") + numerals(number % 100)
-  );
+    return _numerals(Math.floor(number / 100), "C") + numerals(number % 100);
 
-  return _numerals(Math.floor(number / 1000), "M") + numerals(number % 1000)
+  return _numerals(Math.floor(number / 1000), "M") + numerals(number % 1000);
 };
 
 describe("example test", () => {
