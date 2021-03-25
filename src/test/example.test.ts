@@ -30,8 +30,11 @@ const _numerals = (
 
 const numerals = (number: number): string => {
   if (number < 10) return _numerals(number);
-  return (
+  if (number < 100) return (
     _numerals(Math.floor(number / 10), ["X", "L", "C"]) + _numerals(number % 10)
+  );
+  return (
+    _numerals(Math.floor(number / 100), ["C", "D", "M"]) + _numerals(number % 100)
   );
 };
 
@@ -61,6 +64,9 @@ describe("example test", () => {
     [100, "C"],
     [101, "CI"],
     [200, "CC"],
+    [400, "CD"],
+    [800, "DCCC"],
+    [846, "DCCCXLVI"]
   ] as const;
 
   it.each(cases)("%s should return %s", (number, numeral) => {
