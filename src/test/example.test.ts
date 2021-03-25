@@ -1,41 +1,53 @@
 const _numerals = (
   number: number,
-  roots: string[] = ["I", "V", "X"]
+  digit: string = "I"
 ): string => {
-  const digit = roots[0];
-  const bases: { [key: number]: string } = {
-    0: "",
-    5: roots[1],
-    10: roots[2],
-  };
-  let key = 0;
-  if (number < 5) {
-    key = 0;
-  } else if (number < 10) {
-    key = 5;
-  } else {
-    key = 10;
+
+const bases: { [key: string]: string[] } = {
+    "I": ["I", "V", "X"],
+    "X": ["X", "L", "C"],
+    "C": ["C", "D", "M"],
+    "M": ["M", "", ""]
+}
+//   const bases: { [key: number]: string } = {
+//     0: "",
+//     5: digit[1],
+//     10: digit[2],
+//   };
+//   let key = 0;
+//   if (number < 5) {
+//     key = 0;
+//   } else if (number < 10) {
+//     key = 5;
+//   } else {
+//     key = 10;
+//   }
+
+  const base = bases[digit][1];
+  const nextBase = bases[digit][2];
+
+  let baseUnit = ["", digit, digit + digit, digit + digit + digit];
+
+  if (number <= 3) {
+    return baseUnit[number]
   }
-
-  const base = bases[key];
-  const nextBase = bases[key + 5];
-
-  let result = ["", digit, digit + digit, digit + digit + digit];
-
   if (number % 5 === 4) {
     return digit + nextBase;
   }
-  return base + result[number % 5];
+  return base + baseUnit[number % 5];
 };
 
 const numerals = (number: number): string => {
   if (number < 10) return _numerals(number);
   if (number < 100) return (
-    _numerals(Math.floor(number / 10), ["X", "L", "C"]) + numerals(number % 10)
+    _numerals(Math.floor(number / 10), "X") + numerals(number % 10)
   );
+  if (number < 1000)
   return (
-    _numerals(Math.floor(number / 100), ["C", "D", "M"]) + numerals(number % 100)
+    _numerals(Math.floor(number / 100), "C") + numerals(number % 100)
   );
+
+  return _numerals(Math.floor(number / 1000), "M") + numerals(number % 1000)
 };
 
 describe("example test", () => {
@@ -70,6 +82,8 @@ describe("example test", () => {
     [900, "CM"],
     [1000, "M"],
     [1999, "MCMXCIX"],
+    [2008, "MMVIII"],
+    [3999, "MMMCMXCIX"],
   ] as const;
 
   it.each(cases)("%s should return %s", (number, numeral) => {
