@@ -3,7 +3,9 @@ enum Mark {
   X = "X",
 }
 
-enum Position {}
+enum Position {
+  TopLeft = "TopLeft"
+}
 
 interface Board {
   positions: Map<Position, Mark>;
@@ -13,10 +15,21 @@ interface Board {
 interface Game {
   board: Board;
 }
+class Game {
+  play(position: Position) {}
+}
 
 describe("TicTacToe", () => {
   test("X plays first", () => {
     const game = new Game();
-    game.play(Position.TopLeft);
+    expect( () => game.play(Position.TopLeft)).not.toThrow();
   });
+  test("O plays second", () => {
+    const game = new Game();
+    expect( () => {
+      game.play(Position.TopLeft)
+      game.play(Position.TopMiddle)
+    }).not.toThrow();
+  })
 });
+
